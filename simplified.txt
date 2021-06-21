@@ -1,0 +1,40 @@
+
+//store - globalised state
+
+//action - describes what you wanna do 
+// eg increament, i am hubgry
+//simple functon that returns an object
+const increament = () => {
+return{
+  type: 'INCREAMENT'
+}
+}
+const decreament = () => {
+  return{
+    type: 'DECREMENT'
+  }
+  }
+ 
+//reducer - describes how actions tranform state to next state
+//aaction is called and reducer checks what action you did and motidfies store based on the action 
+const counter = (state=0, action) => {
+  switch(action.type){
+    case "INCREAMENT":
+      return state +1;
+    case "DECREMENT":
+      return state -1 
+  }
+}
+
+let store = createStore(counter)
+
+//display in cosole
+store.subscribe(()=>console.log(store.getState()))
+
+
+
+//dispatch - where we can dispatch get things done
+//hey dispatch this action to the reducer which checks what to do and then state gets updated
+store.dispatch(increament())
+store.dispatch(decreament())
+store.dispatch(decreament())
